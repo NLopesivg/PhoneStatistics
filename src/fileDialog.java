@@ -4,6 +4,7 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -34,6 +35,7 @@ public class fileDialog {
         panel.setLayout(layout);
 
         JButton button = new JButton("Click Me!");
+        JButton next = new JButton("Seguinte");
         final JLabel label = new JLabel();
 
         button.addActionListener(new ActionListener() {
@@ -45,14 +47,27 @@ public class fileDialog {
                     File source = fileChooser.getSelectedFile();
                     label.setText("File Selected: " + source.getName());
                     sourceRoute = source.getPath();
+                    try {
+                        interpretDocument.csvReader(sourceRoute);
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }else{
                     label.setText("Open command canceled");
                 }
             }
         });
 
+        next.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+
         panel.add(button);
         panel.add(label);
+        panel.add(next);
         frame.getContentPane().add(panel, BorderLayout.CENTER);
     }
 

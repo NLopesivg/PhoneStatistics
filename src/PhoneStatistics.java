@@ -8,7 +8,7 @@ public class PhoneStatistics {
 
         path = fileDialog.createWindow();
 
-        interpretDocument.csvReader(path);
+  //      interpretDocument.csvReader(path);
 
         }
 

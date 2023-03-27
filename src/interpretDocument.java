@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class interpretDocument {
 
+    private static final String SEMICOLON_DELIMITER = ";";
+
     public static void csvReader(String path) throws FileNotFoundException {
         Scanner sc = null;
         try {
